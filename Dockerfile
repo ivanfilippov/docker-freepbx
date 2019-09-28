@@ -5,7 +5,7 @@ LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
    ENV DB_EMBEDDED=TRUE \
        ENABLE_CRON=TRUE \
        ENABLE_SMTP=TRUE \
-       ASTERISK_VERSION=16.5.1 \
+       ASTERISK_VERSION=16.5.0 \
        BCG729_VERSION=1.0.4 \
        SPANDSP_VERSION=20180108 \
        FREEPBX_VERSION=15.0.16.15 \
@@ -129,7 +129,9 @@ LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
        cd /usr/src && \
        mkdir -p asterisk && \
        curl -sSL http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${ASTERISK_VERSION}.tar.gz | tar xvfz - --strip 1 -C /usr/src/asterisk && \
+       curl -sSL http://usecallmanager.nz/includes/cisco-usecallmanager-${ASTERISK_VERSION}.patch --output cisco-usecallmanager-${ASTERISK_VERSION}.patch && \
        cd /usr/src/asterisk/ && \
+       patch -p1 < ../cisco-usecallmanager-${ASTERISK_VERSION}.patch && \
        make distclean && \
        contrib/scripts/get_mp3_source.sh && \
        ./configure --with-resample --with-pjproject-bundled --with-jansson-bundled --with-ssl=ssl --with-srtp && \

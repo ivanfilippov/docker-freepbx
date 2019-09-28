@@ -21,6 +21,7 @@ This will build a container for [FreePBX](https://www.freepbx.org) - A Voice ove
 * Automatically Installs User Control Panel and displays at first page
 * Option to Install [Flash Operator Panel 2](https://www.fop2.com/)
 * Customizable FOP and Admin URLs
+* Includes Cisco IP Phone patch from [http://usecallmanager.nz](http://usecallmanager.nz)
 
 This Container uses [tiredofit/debian:stretch](https://hub.docker.com/r/tiredofit/debian) as a base.
         
